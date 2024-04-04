@@ -1,0 +1,204 @@
+# AIGC Config
+lora_dir: ckpts/sd_models/Lora
+# base_model_dir: ckpts/sd_models/jt-v4-kl-f8-anime2
+# base_model_dir: ckpts/sd_models/beautifulRealistic_v7
+# base_model_dir: ckpts/sd_models/realisticVisionV51
+base_model_dir: ckpts/sd_models/DreamShaper
+# base_model_dir: ckpts/sd_models/chilloutmix_NiPrunedFp32Fix
+control_depth_dir: ckpts/sd_models/sd-controlnet-depth
+control_hed_dir: ckpts/sd_models/sd-controlnet-hed
+control_openpose_dir: ckpts/sd_models/sd-controlnet-openpose
+control_canny_dir: ckpts/sd_models/sd-controlnet-canny
+control_lineart_dir: ckpts/sd_models/control_v11p_sd15_lineart
+
+# face detector
+# face_detector_ckpt: ckpts/FaceBoxesProd.pth
+# face_detector_ckpt_: ckpts/scrfd_model.pth
+# face_detector_cfg: modules/face_detector1/configs/scrfd/scrfd_2.5g.py
+# face_detector_ckpt_: ckpts/scrfd_small_kps.pth
+# face_detector_cfg: modules/face_detector1/configs/scrfd/scrfd_2.5g_bnkps.py
+face_detector_ckpt: ckpts/scrfd_base_kps.pth
+face_detector_cfg: modules/face_detector/configs/scrfd/scrfd_10g_bnkps.py
+
+#face attribute
+res34_ckpt: ckpts/resnet34-b627a593.pth
+res34_multi_ckpt: ckpts/res34_multi_7.pt
+
+#person attribute
+detector_weights: ckpts/yolov8x_person_face.pt
+mivolo_ckpt: ckpts/model_imdb_cross_person_4.22_99.46.pth.tar
+
+#face parsing
+face_parsing_cfg: modules/face_parsing/mysegconfig/segnext_CelebAMask_test.py
+face_parsing_ckpt: ckpts/iter_160000.pth
+# face_parsing_cfg: modules/face_parsing/mysegconfig/segnext_CelebAMask_small.py
+# face_parsing_ckpt: ckpts/segnext_small.pth
+
+# person detector
+# object_detector_cfg: modules/person_detector/configs/yolov3_d53_8xb8-ms-416-273e_coco.py
+# object_detector_ckpt: ckpts/yolov3_d53_mstrain-416_273e_coco-2b60fcd9.pth
+object_detector_cfg: modules/person_detector/configs/yolox_x_8xb8-300e_coco.py
+object_detector_ckpt: ckpts/yolox_x_8x8_300e_coco_20211126_140254-1ef88d67.pth
+scores_threshold: 0.7
+area_ratio: 0.15
+min_area_ratio: 0.01
+iou_threshold: 0.3
+
+# keyp2d detector
+keyp2d_detector_cfg: modules/keyp2d_detector/configs/hrnet_w48_combine_wholebody_384x288.py
+keyp2d_detector_ckpt: ckpts/epoch_210.pth
+keyp2d_thresh: 0.4
+min_keyp2d_number: 4
+full_body_path: ckpts/keyp_template/full_body.npy
+collect_loc_path: ckpts/keyp_template/rect_loc.npy
+keyp2d_seed: -1
+
+# hand detector
+mano_mean_params: ckpts/handmocap/mean_mano_params.pkl
+mano_estimation_ckpt: ckpts/handmocap/pose_shape_best.pth
+smpl_dir: ckpts/handmocap/smpl
+renderer_type: pytorch3d
+
+
+# codeformer
+codefomer_ckpt: ckpts/codeformer.pth
+
+#image segmentation
+# image_seg_ckpt: ckpts/swin.pth
+image_oneformer_seg_ckpt: ckpts/896x896_250_16_swin_l_oneformer_ade20k_160k.pth
+
+#image depth
+image_depth_ckpt: ckpts/dpt_hybrid-midas-501f0c75.pt
+detect_resolution: 568
+
+#image hed
+image_hed_ckpt: ckpts/sd_models/hed/network-bsds500.pth
+hed_resolution: 760
+
+#image matte
+image_matte_ckpt: ckpts/SGHM-ResNet50.pth
+
+#image harmony
+image_iharm_ckpt: ckpts/DucoNet1024.pth
+
+# ip_adapter
+ip_scale: 0.0
+ip_image_encoder_ckpt: ckpts/ip_adapter_ckpt/image_encoder
+ip_adapter_ckpt: ckpts/ip_adapter_ckpt/ip-adapter-plus-face_sd15.bin
+
+# general settings
+log_dir: results/logs
+debug_flag: False
+
+# sd params
+# p_prompt: 
+#   cyber: Cyberpunk style,high tech,near-future Earth,science fiction,extremely detailed CG unity 8k wallpaper,the most beautiful artwork in the world,highly detailed,masterpiece ,ultra-detailed,illustration,by John Constable,Ed Blinkey,Atey Ghailan,trending on ArtStation,
+#   guoman: chromatic aberration,depth of field,soft lighting,extremely detailed CG unity 8k wallpaper,the most beautiful artwork in the world,highly detailed,masterpiece ,ultra-detailed,illustration,blush,best quality,trending on ArtStation,
+#   fantasy: city background,dome,onion dome,pennant,fog,arch bridge,trail,corridor,stairs,buttress,cbzbb,extremely detailed CG unity 8k wallpaper,the most beautiful artwork in the world,highly detailed,masterpiece ,ultra-detailed,illustration,best quality,trending on ArtStation,
+#   golden: golden sci-fi,mechanical ascension,mechanical transformation,glass sculptures, extremely detailed CG unity 8k wallpaper,the most beautiful artwork in the world,highly detailed,masterpiece ,ultra-detailed,illustration,best quality,trending on ArtStation,masterpiece ,best quality,
+#   draw: lakes,Hangzhou, extremely detailed CG unity 8k wallpaper,the most beautiful artwork in the world,highly detailed,masterpiece ,ultra-detailed,illustration,best quality,majestic impressionism oil painting by Atey Ghailan,Studio Ghibli,trending on ArtStation,
+#   jingtan: Metaverse,AlienePlanet,Future Architecture,by Zaha,extremely detailed CG unity 8k wallpaper,the most beautiful artwork in the world,highly detailed,masterpiece ,ultra-detailed,illustration,best quality,majestic impressionism oil painting by Waterhouse,John Constable,Studio Ghibli,by Jeremy Mann,Greg Manchess,trending on ArtStation,
+#   lineart: pencil drawing,stick figure, line outline,line draft,lineart,gray line drawing,masterpiece, best quality,
+#   watercolor: beautiful watercolor painting,watercolor splashes on the background,a watercolor painting,Diego Gisbert Llorens,lyco art,highly detailed digital,by Rachel Walker,
+#   papercut: ((3D paper cut)),masterpiece,best quality,
+# n_prompt:
+#   - blurry,naked,NFSW,bad anatomy,disfigured,text,word,logo,jpeg artifacts,signature,watermark,username, simple background,monochrome,pregnant,duplicate,morbid,mutilated,hermaphrodite,mutation,mutated,extra_limb,poorly drawn face,disfigured,kitsch,ugly,oversaturated,grain,duplicated,low-res,Deformed,blurry,extra limb,poorly drawn hands,missing limb,floating limbs,disconnected limbs,malformed hands,blur,out of focus,long neck,long body,ugly,disgusting,poorly drawn,childish,mutilated,,mangled,old,surreal,fused fingers,messy drawing,broken legs censor,censored,censor_bar,mutated hands and fingers,long body,mutation,poorly drawn,black-white,liquid body,liquid tongue,malformed,mutated,anatomical nonsense,text font ui,error,malformed hands,long neck,blurred,lowers,low res,bad proportions,bad shadow,uncoordinated body,unnatural body,fused breasts,bad breasts,huge breasts,poorly drawn breasts,extra breasts,liquid breasts,heavy breasts,missing breasts,huge haunch,huge thighs,huge calf,bad hands,fused hand,missing hand,disappearing arms,disappearing thigh,disappearing calf,disappearing legs,fused ears,bad ears,poorly drawn ears,extra ears,liquid ears,heavy ears,missing ears,old photo,colorless,  missing arms,missing legs,extra arms,extra legs,pubic hair,plump,disfigured,bad art,deformed,extra limbs,extra barrel,close up,b&w,weird colors,blurry,duplicate,morbid,mutilated,out of frame,extra fingers,mutated hands,poorly drawn hands,poorly drawn face,mutation,deformed,ugly,blurry,bad anatomy,bad proportions,extra limbs,cloned face,disfigured,out of frame,ugly,extra limbs,bad anatomy,gross proportions,malformed limbs,missing arms,missing legs,extra arms,extra legs,mutated hands,fused fingers,too many fingers,long neck,tripod,tube,Photoshop,video game,ugly,tiling,poorly drawn hands,poorly drawn feet,poorly drawn face,out of frame,mutation,mutated,extra limbs,extra legs,extra arms,disfigured,deformed,cross-eye,body out of frame,blurry,bad art,bad anatomy,3d render,umbrella
+# txt2img_nprompt: 
+#   - bikini,swimsuit,tit,tits,titties,titty,sexy body,sexy suits,naked body,sexy lady,naked lady,tits,breasts,blurry,naked,NFSW,bad anatomy,disfigured,text,word,logo,jpeg artifacts,signature,watermark,username, simple background,monochrome,pregnant,duplicate,morbid,mutilated,hermaphrodite,mutation,mutated,extra_limb,poorly drawn face,disfigured,kitsch,ugly,oversaturated,grain,duplicated,low-res,Deformed,blurry,extra limb,poorly drawn hands,missing limb,floating limbs,disconnected limbs,malformed hands,blur,out of focus,long neck,long body,ugly,disgusting,poorly drawn,childish,mutilated,,mangled,old,surreal,fused fingers,messy drawing,broken legs censor,censored,censor_bar,mutated hands and fingers,long body,mutation,poorly drawn,black-white,liquid body,liquid tongue,malformed,mutated,anatomical nonsense,text font ui,error,malformed hands,long neck,blurred,lowers,low res,bad proportions,bad shadow,uncoordinated body,unnatural body,fused breasts,bad breasts,huge breasts,poorly drawn breasts,extra breasts,liquid breasts,heavy breasts,missing breasts,huge haunch,huge thighs,huge calf,bad hands,fused hand,missing hand,disappearing arms,disappearing thigh,disappearing calf,disappearing legs,fused ears,bad ears,poorly drawn ears,extra ears,liquid ears,heavy ears,missing ears,old photo,colorless,  missing arms,missing legs,extra arms,extra legs,pubic hair,plump,disfigured,bad art,deformed,extra limbs,extra barrel,close up,b&w,weird colors,blurry,duplicate,morbid,mutilated,out of frame,extra fingers,mutated hands,poorly drawn hands,poorly drawn face,mutation,deformed,ugly,blurry,bad anatomy,bad proportions,extra limbs,cloned face,disfigured,out of frame,ugly,extra limbs,bad anatomy,gross proportions,malformed limbs,missing arms,missing legs,extra arms,extra legs,mutated hands,fused fingers,too many fingers,long neck,tripod,tube,Photoshop,video game,ugly,tiling,poorly drawn hands,poorly drawn feet,poorly drawn face,out of frame,mutation,mutated,extra limbs,extra legs,extra arms,disfigured,deformed,cross-eye,body out of frame,blurry,bad art,bad anatomy,3d render,umbrella
+# papercut_nprompt:
+#   - 2D,lowres, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, realistic,
+p_prompt:
+  cyberpunk: busy streets in neon light.painted by Dylan Kowalski,masterpiece, best quality, cyberpunk style,CS-MKII.
+  draw: (extremely detailed CG unity 8k wallpaper), the most beautiful artwork in the world, highly detailed, masterpiece ,ultra-detailed, illustration, best quality, majestic impressionism oil painting by Atey Ghailan, Studio Ghibli, trending on ArtStation,
+  watercolor: beautiful watercolor painting,watercolor splashes on the background, a watercolor painting, Diego Gisbert Llorens, lyco art, highly detailed digital,by Rachel Walker,
+  # watercolor: asian, watercolor style, highly detailed, masterpiece ,ultra-detailed
+  # real: asian, realistic photography, highly detailed, masterpiece, best quality,
+  real: ((best quality)), (ultra high res), extremely detailed, 8k,
+  # cartoon: portrait painting by Makoto Shinkai,anime style,brush,Exquisite illustrations,masterpiece,best quality.
+  cartoon: best quality, cartoon_portrait, highly detailed, masterpiece, ultra-detailed, illustration,
+  # cartoon: ((best quality)),((masterpiece)),(detailed),((asian)),(Artgerm inspired:1.2),(pixiv contest winner:1.1),cartoon, close-up portrait,thick brush,HD anime wallpaper,8k resolution,eastern face
+n_prompt:
+  - BadDream, FastNegativeV2, (UnrealisticDream:1.3), american,European,Bearded,Collateral beard,blurry, naked, NFSW, bad anatomy, disfigured, ((text)), ((word)), (((logo))), jpeg artifacts, (((signature))), (((watermark))), (((username))),  (((simple background))), monochrome, pregnant, duplicate, morbid, mutilated, hermaphrodite, mutation, mutated, (extra_limb), poorly drawn face, disfigured, kitsch, ugly, oversaturated, grain, (((duplicated))), low-res, (Deformed), blurry, extra limb, ((poorly drawn hands)), missing limb, floating limbs, disconnected limbs, malformed hands, blur, out of focus, long neck, long body, (((ugly))), disgusting, poorly drawn, childish, mutilated, , mangled, old, surreal, fused fingers, messy drawing, broken legs censor, censored, censor_bar, (mutated hands and fingers:1.5), (long body :1.3), (mutation, poorly drawn :1.2), black-white, liquid body, liquid tongue, malformed, mutated, anatomical nonsense, text font ui, error, malformed hands, long neck, blurred, lowers, low res, bad proportions, bad shadow, uncoordinated body, unnatural body, fused breasts, bad breasts, huge breasts, poorly drawn breasts, extra breasts, liquid breasts, heavy breasts, missing breasts, huge haunch, huge thighs, huge calf, bad hands, fused hand, missing hand, disappearing arms, disappearing thigh, disappearing calf, disappearing legs, fused ears, bad ears, poorly drawn ears, extra ears, liquid ears, heavy ears, missing ears, old photo, colorless,   (((missing arms))),(((missing legs))), (((extra arms))),(((extra legs))), pubic hair, plump, ((disfigured)), ((bad art)), ((deformed)),((extra limbs)), ((extra barrel)),((close up)),((b&w)), weird colors, blurry, (((duplicate))), ((morbid)), ((mutilated)), [out of frame], extra fingers, mutated hands, ((poorly drawn hands)), ((poorly drawn face)), (((mutation))), (((deformed))), ((ugly)), blurry, ((bad anatomy)), (((bad proportions))), ((extra limbs)), cloned face, (((disfigured))), out of frame, ugly, extra limbs, (bad anatomy), gross proportions, (malformed limbs), ((missing arms)), ((missing legs)), (((extra arms))), (((extra legs))), mutated hands, (fused fingers), (too many fingers), (((long neck))), (((tripod))), (((tube))), Photoshop, video game, ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, mutation, mutated, extra limbs, extra legs, extra arms, disfigured, deformed, cross-eye, body out of frame, blurry, bad art, bad anatomy, 3d render, (((umbrella)))
+lora_prompt_val:
+  draw: 0.8
+  watercolor: 1
+  cyberpunk: 0.8
+  real: 1
+  cartoon: 1
+
+lora_face_restore:
+  draw: 0.1
+  watercolor: 0.1
+  cyberpunk: 0.1
+  real: 0.1
+  cartoon: 0.3
+
+lora_prompt_val_normal:
+  draw: 0.8
+  watercolor: 0.7
+  cyberpunk: 0.7
+  real: 0.7
+  cartoon: 0.8
+
+lora_prompt_val_special:
+  draw: 0.35
+  watercolor: 0.35
+  cyberpunk: 0.35
+  real: 0.35
+  cartoon: 0.35
+
+hed_params_depth:
+  draw:
+    - 0.6
+  watercolor:
+    - 0.55
+  cyberpunk:
+    - 0.6
+  real:
+    - 0.6
+  cartoon:
+    - 0.55
+
+depth_params_hed:
+  draw:
+    - 0.5
+  watercolor:
+    - 0.5
+  cyberpunk:
+    - 0.5
+  real:
+    - 0.5
+  cartoon:
+    - 0.5
+
+img2img_params:
+  n_iter: 1
+  batch_size: 1
+  cfg_scale: 10
+  cfg_scale_pose: 13.5
+  sampler_index: 0
+  steps: 20
+  seed: -1
+  denoise_strength:
+    depth_and_hed_default: 0.72
+    pose_and_hed_default: 0.65
+    pose_default: 0.85
+    special_default: 0.35
+    lineart: 1.0
+    papercut: 0.85
+    chinese_anime: 0.9
+
+txt2img_params:
+  t2i_steps: 15
+  t2i_sampler_index: 0
+  t2i_width: 480
+  t2i_height: 800
+  t2i_seed: -1
+  i2i_steps: 20
+  i2i_sampler_index: 0
+  denoising_strength: 
+    default: 0.65
+    chinese_anime: 0.9
+
+sensitive_words:
+  - body,2g1c,2 girls 1 cup,acrotomophilia,alabama hot pocket,alaskan pipeline,anal,anilingus,anus,apeshit,arsehole,ass,asshole,assmunch,auto erotic,autoerotic,babeland,baby batter,baby juice,ball gag,ball gravy,ball kicking,ball licking,ball sack,ball sucking,bangbros,bangbus,bareback,barely legal,barenaked,bastard,bastardo,bastinado,bbw,bdsm,beaner,beaners,beaver cleaver,beaver lips,beastiality,bestiality,big black,big breasts,breasts,breast,big knockers,big tits,bimbos,birdlock,bitch,bitches,black cock,blonde action,blonde on blonde action,blowjob,blow job,blow your load,blue waffle,blumpkin,bollocks,bondage,boner,boob,boobs,booty call,brown showers,brunette action,bukkake,bulldyke,bullet vibe,bullshit,bung hole,bunghole,busty,butt,buttcheeks,butthole,camel toe,camgirl,camslut,camwhore,carpet muncher,carpetmuncher,chocolate rosebuds,cialis,circlejerk,cleveland steamer,clit,clitoris,clover clamps,clusterfuck,cock,cocks,coprolagnia,coprophilia,cornhole,condom,coon,coons,creampie,cum,cumming,cumshot,cumshots,cunnilingus,cunt,darkie,date rape,daterape,deep throat,deepthroat,dendrophilia,dick,dildo,dingleberry,dingleberries,dirty pillows,dirty sanchez,doggie style,doggiestyle,doggy style,doggystyle,dog style,dolcett,domination,dominatrix,dommes,donkey punch,double dong,double penetration,dp action,dry hump,dvda,eat my ass,ecchi,ejaculation,erotic,erotism,escort,eunuch,fag,faggot,fecal,felch,fellatio,feltch,female squirting,femdom,figging,fingerbang,fingering,fisting,foot fetish,footjob,frotting,fuck,fuck buttons,fuckin,fucking,fucktards,fudge packer,fudgepacker,futanari,gangbang,gang bang,gay sex,genitals,giant cock,girl on,girl on top,girls gone wild,goatcx,goatse,god damn,gokkun,golden shower,goodpoop,goo girl,goregasm,grope,group sex,g-spot,guro,hand job,handjob,hard core,hardcore,hentai,homoerotic,honkey,hooker,horny,hot carl,hot chick,how to kill,how to murder,huge fat,humping,incest,intercourse,jack off,jail bait,jailbait,jelly donut,jerk off,jigaboo,jiggaboo,jiggerboo,jizz,juggs,kike,kinbaku,kinkster,kinky,knobbing,leather restraint,leather straight jacket,lemon party,livesex,lolita,lovemaking,make me come,male squirting,masturbate,masturbating,masturbation,menage a trois,milf,missionary position,mong,motherfucker,mound of venus,mr hands,muff diver,muffdiving,naked,nake,nambla,nawashi,negro,neonazi,nigga,nigger,nig nog,nimphomania,nipple,nipples,nsfw,nsfw images,nude,nudity,nutten,nympho,nymphomania,octopussy,omorashi,one cup two girls,one guy one jar,orgasm,orgy,paedophile,paki,panties,panty,pedobear,pedophile,pegging,penis,phone sex,piece of shit,pikey,pissing,piss pig,pisspig,playboy,pleasure chest,pole smoker,ponyplay,poof,poon,poontang,punany,poop chute,poopchute,porn,porno,pornography,prince albert piercing,pthc,pubes,pussy,queaf,queef,quim,raghead,raging boner,rape,raping,rapist,rectum,reverse cowgirl,rimjob,rimming,rosy palm,rosy palm and her 5 sisters,rusty trombone,sadism,santorum,scat,schlong,scissoring,semen,sex,sexcam,sexo,sexy,sexual,sexually,sexuality,shaved beaver,shaved pussy,shemale,shibari,shit,shitblimp,shitty,shota,shrimping,skeet,slanteye,slut,s&m,smut,snatch,snowballing,sodomize,sodomy,spastic,spic,splooge,splooge moose,spooge,spread legs,spunk,strap on,strapon,strappado,strip club,style doggy,suck,sucks,suicide girls,sultry women,swastika,swinger,tainted love,taste my,tea bagging,threesome,throating,thumbzilla,tied up,tight white,tit,tits,titties,titty,tongue in a,topless,tosser,towelhead,tranny,tribadism,tub girl,tubgirl,tushy,twat,twink,twinkie,two girls one cup,undressing,upskirt,urethra play,urophilia,vagina,venus mound,viagra,vibrator,violet wand,vorarephilia,voyeur,voyeurweb,voyuer,vulva,wank,wetback,wet dream,white power,whore,worldsex,wrapping men,wrinkled starfish,xx,xxx,yaoi,yellow showers,yiffy,zoophilia
